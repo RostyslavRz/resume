@@ -1,0 +1,91 @@
+{{!-- 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+    <p><h1>{{name}}</h1></p>
+    <br>
+    <hr>
+    <p><b><em>was born:</em></b> {{birthdate}} - {{birthplace}}</p>
+    <p><b><em>died:</em></b> {{deathdate}} - {{deathplace}}</p>
+    <hr>
+    <p><b><em>Nationality:</em></b> {{nationality}}</p>
+    <p><b><em>Occupation:</em></b> {{occupation}}</p>
+    <p><b><em>Known for:</em></b>
+        <ul>
+            {{#each known_for}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul> 
+    </p>
+    <hr>
+    <p><b><em>Degree:</em></b>
+        {{#each education}}
+        <li>{{degree}} ({{field}}, {{institution}}, {{year}})</li>
+        {{/each}}
+    </p>
+    <hr>
+    <p><b><em>Notable publication:</em></b>
+        {{#each notable_publications}}
+        <li>{{title}} ({{year}}, {{publisher}})</li>
+        {{/each}}
+    </p>
+    <hr>
+    <p><b><em>Awards:</em></b>
+        {{#each awards}}
+        <li>{{title}} ({{year}})</li>
+        {{description}}
+        {{/each}}
+    </p>
+    <hr>
+    <p><b><em>Influences:</em></b>
+        <ul>
+            {{#each influences}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul> 
+    </p>
+    <hr>
+    <p><b><em>Influenced:</em></b>
+        <ul>
+            {{#each influenced}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul> 
+    </p>
+    <hr>
+    <p><b><em>Quotes:</em></b>
+        <ul>
+            {{#each quotes}}
+                <li><q>{{this}}</q></li>
+            {{/each}}
+        </ul> 
+    </p>
+    <hr>
+    <p><b><em>Major discoveries:</em></b>
+        {{#each major_discoveries}}
+            <li>{{title}} ({{year}})</li>
+        {{description}}
+        {{/each}}
+    </p>
+    <hr>
+    <p><b><em>Contributions:</em></b>
+        {{#with contributions}}
+            <li>{{title}} ({{field}})</li>
+            <small>{{year}}</small>
+            <br>
+            <em>{{description}}</em>
+        {{/with}}
+    </p>
+    <hr>
+</div>
+
+
+
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
+
+
