@@ -11,8 +11,7 @@
                 <hr>
                 {{date}}, {{location.city}}, {{location.country}}
                     <ol>
-                        <li><p>{{program.[0].name}}, ({{program.[0].type}}, {{program.[0].duration}}h)</p></li>
-                                 
+                        <li><p>{{program.[0].name}}, ({{program.[0].type}}, {{program.[0].duration}}h)</p></li>     
                             <ul>
                             {{#with program.[0].details}}
                                 <li>Museum: {{museum.name}}</li>
@@ -33,10 +32,10 @@
                                             </ul>
                                     </ul>
                                 <br>
-                                <em>Guide: {{guide.name}}, {{guide.language}}, {{guide.rating}}</em>   
+                                <em>Guide: {{guide.name}}, {{guide.language}}, {{guide.rating}}</em>       
                             {{/with}}
                             </ul>
-
+                        <hr>
                         <li><p>{{program.[1].name}}, ({{program.[1].type}}, {{program.[1].duration}}h)</p></li>
                             <ul>
                             {{#with program.[1].details}}
@@ -50,17 +49,11 @@
                                 <br>
                                 <em>Guide: {{guide.name}}, {{guide.language}}, {{guide.rating}}</em>   
                             {{/with}}
-                            </ul>  
-                                
-                                
-                            
-
-                        
+                            </ul>
+                            <hr>    
                     </ol>
         {{/with}}
-    
     {{/with}}
-    
 </div>
 
 
@@ -69,5 +62,3 @@
     Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
     Адже наш layout/default.hbs має вже структуру HTML
 --}}
-
-
