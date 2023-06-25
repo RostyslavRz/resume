@@ -1,0 +1,151 @@
+{{!
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<div>
+  <h1>Car</h1>
+  <hr />
+  <p><em><strong><h3>{{make}}
+          {{model}},
+          {{year}},
+          {{color}}</h3></strong></em></p>
+  <hr />
+
+  <b>Features:</b>
+  <ul>
+    {{#with features}}
+      <li><em><b>interior:</b></em></li>
+      <ul>
+        <li>seats:</li>
+        <ul>
+          {{#with interior.seats}}
+            <li>{{material}},
+              {{color}}, heated
+              {{#if head}}{{/if}}, ventilated
+              {{#if ventilated}}{{/if}}
+            </li>
+          {{/with}}
+        </ul>
+
+        <li>dashboard:</li>
+        <ul>
+          {{#with interior.dashboard}}
+            <li>{{material}},
+              {{color}}, display:
+              {{#with display}}
+                ({{type}},
+                {{size}},
+                {{resolution}}, touchsreen
+                {{#if touchscreen}}{{/if}})
+              {{/with}}
+            </li>
+          {{/with}}
+        </ul>
+
+        <li>audio:</li>
+        <ul>
+          {{#with interior.audio}}
+            <li>{{system}}, speakers
+              {{speakers}}, subwoofer
+              {{#if subwoofer}}{{/if}}, bluetooth
+              {{#if bluetooth}}{{/if}}, USB
+              {{#if USB}}{{/if}}
+            </li>
+          {{/with}}
+        </ul>
+        <br />
+
+      </ul>
+      <li><em><b>exterior:</b></em></li>
+      <ul>
+        <li>wheels:</li>
+        <ul>
+          {{#with exterior.wheels}}
+            <li>{{size}}, {{type}},{{color}}</li>
+          {{/with}}
+        </ul>
+
+        <li>headlights:</li>
+        <ul>
+          {{#with exterior.headlights}}
+            <li>{{type}},
+              {{brightness}}, automatic
+              {{#if automatic}}{{/if}}
+            </li>
+          {{/with}}
+        </ul>
+
+        <li>sunroof:</li>
+        <ul>
+          {{#with exterior.sunroof}}
+            <li>{{type}}, {{size}}, automatic
+              {{#if automatic}}{{/if}}
+          {{/with}}
+        </ul>  
+      </ul>
+      <br>
+
+      <li><em><b>safety:</b></em></li>
+      <ul>
+        <li>airbags:</li>
+        <ul>
+          {{#with safety.airbags}}
+            <li>front: {{front}}, side: {{side}}, knee: {{knee}}, rear: {{rear}}</li>
+          {{/with}}
+        </ul>
+
+        <li>assistance:</li>
+        <ul>
+          {{#with safety.assistance}}
+            <li>blind_spot_monitoring {{#if blind_spot_monitoring}}{{/if}}</li>
+            <li>rear_cross_traffic_alert {{#if rear_cross_traffic_alert}}{{/if}}</li>
+            <li>lane_departure_warning {{#if lane_departure_warning}}{{/if}}</li>
+            <li>adaptive_cruise_control {{#if adaptive_cruise_control}}{{/if}}</li>
+            <li>collision_warning {{#if collision_warning}}{{/if}}</li>
+          {{/with}}
+        </ul>
+      </ul>
+    {{/with}}
+  </ul>
+<hr>
+
+<b>Engine:</b>
+  <ul>
+    {{#with engine}}
+      <li>{{type}}, {{displacement}} L, {{horsepower}} hp, {{torque}} Hm</li>
+      <li>transmission: {{transmission.type}} ({{transmission.gears}})</li>
+    {{/with}}
+  </ul>
+  <br>
+ <b>Fuel economy:</b> 
+  <ul>
+    {{#with fuel_economy}}
+      <li>city/highway/combined: {{city}}/ {{highway}}/ {{combined}}</li>
+    {{/with}}
+  </ul>
+  <hr>
+  
+<b>Price:</b>
+  <ul>
+  {{#with price}}
+      <li>base: {{base}}$</li>
+      <li>destination: {{destination}}$</li>
+      <li>options:</li>
+        <ul>
+        {{#with options}}
+          <li>navigation: {{navigation}}$</li>
+          <li>moonroof: {{moonroof}}$</li>
+          <li>premium paint: {{premium_paint}}$</li>
+        {{/with}}
+        </ul>
+      <li><em><b>Total: {{total}}$</b></em></li>
+    {{/with}}
+  </ul>
+  <hr>  
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
