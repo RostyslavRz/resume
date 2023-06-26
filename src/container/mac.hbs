@@ -1,0 +1,103 @@
+{{!
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<div>
+  <h1>MAC</h1>
+  <hr />
+
+  <p><h2>{{name}} ({{category}})</h2></p>
+  <em><h3>{{description}}</h3></em>
+  <h3>Price: {{price}} $</h3>
+  <hr />
+
+  <p><h2>Features:</h2></p>
+  <ul>
+    <li><h3>processor</h3></li>
+    {{#with features.processor}}
+      {{brand}},
+      {{model}},
+      {{speed}}, cores
+      {{cores}}, cache
+      {{cache}}
+    {{/with}}
+
+    <li><h3>memory</h3></li>
+    {{#with features.memory}}
+      {{type}},
+      {{size}},
+      {{speed}}
+    {{/with}}
+
+    <li><h3>storage</h3></li>
+    {{#with features.memory}}
+      {{type}},
+      {{size}}
+    {{/with}}
+
+    <li><h3>display</h3></li>
+    {{#with features.display}}
+      {{size}},
+      {{resolution}},
+      {{technology}},
+      {{color_space}},
+      {{brightness}},
+      {{refresh_rate}}
+    {{/with}}
+
+    <li><h3>graphics</h3></li>
+    {{#with features.graphics}}
+      {{brand}},
+      {{model}},
+      {{memory}}
+    {{/with}}
+
+    <li><h3>ports</h3></li>
+    <ol>
+      {{#each features.ports}}
+        <li>{{type}}/ count:
+          {{count}}/ features:
+          <ul>
+            {{#each features}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ol>
+
+    <li><h3>battery</h3></li>
+    {{#with features.battery}}
+      {{type}},
+      {{capacity}},
+      {{life}}
+    {{/with}}
+
+    <li><h3>weight</h3></li>
+    {{features.weight}}
+
+    <li><h3>dimensions</h3></li>
+    h/w/d:
+    {{#with features.dimensions}}
+      {{height}}/
+      {{width}}/
+      {{depth}}
+    {{/with}}
+
+    <li><h3>operating system</h3></li>
+    {{features.operating_system}}
+
+    <li><h3>accessories</h3></li>
+    <ul>
+      {{#each features.accessories}}
+        <li>{{name}} ({{price}} $)</li>
+      {{/each}}
+    </ul>
+  </ul>
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
