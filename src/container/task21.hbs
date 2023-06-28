@@ -1,0 +1,122 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<hr>
+<ul>
+    <div class="card">
+        <div class="card-body">
+            {{#with heading.main}}
+            <h1>{{title}}</h1>
+            {{text}}
+            <div>
+                {{#with button_text}}
+                <br><button class="btn btn-primary">{{solid}}</button>
+                <br>
+                <br>
+                <button class="btn btn-outline-primary">{{outline}}</button>
+                {{/with}}
+            </div>
+            {{/with}}
+        </div>
+    </div>
+</ul>
+
+<ul>
+    <div class="card">
+        <div class="card-body">
+            {{#with heading.second}}
+            <h2>{{title}}</h2>
+            {{text}}
+            <div>
+                {{#with button_text}}
+                <br><button class="btn btn-secondary">{{solid}}</button>
+                <br>
+                <br>
+                <button class="btn btn-outline-secondary">{{outline}}</button>
+                {{/with}}
+            </div>
+            {{/with}}
+        </div>
+    </div>
+</ul>
+
+<ul>
+    <div class="card">
+        <div class="card-body">
+            {{#with heading.subblock}}
+            <h3>{{title}}</h3>
+            {{text}}
+            <div>
+                {{#with button_text}}
+                <br><button class="btn btn-dark">{{solid}}</button>
+                <br>
+                <br>
+                <button class="btn btn-outline-dark">{{outline}}</button>
+                {{/with}}
+            </div>
+            {{/with}}
+        </div>
+    </div>
+</ul>
+<hr>
+
+<ul>
+    <div class="card">
+        <div class="card-body">
+            <div class="display-1">{{nested_display.title}}</div>
+            <div class="card">
+                <div class="card-body">
+                    {{#with nested_display.children_display}}
+                    <div class="display-4">{{title}}</div>
+                    {{title}}
+                    <br><button class="btn btn-warning">{{button.text}}</button>
+                    {{/with}}
+                </div>
+            </div>
+            <br>
+            <div>
+                <h6>{{nested_display.header_text}}</h6>
+            </div>
+            <div>
+                <button class="btn btn-info">{{nested_display.button.text}}</button>
+            </div>
+        </div>
+    </div>
+</ul>
+<hr>
+
+<ul>
+    {{#with paragraph}}
+    <h4>{{title}}</h4>
+    {{text}}
+
+    <ul>
+        {{#with button}}
+        <br>
+        <p><a href={{url}} class="text-primary">{{text}}</a></p>
+        {{/with}}
+    </ul>
+
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <ul>
+                {{#each list_name}}
+                <br>
+                <li><a href={{url}} class="text-primary">{{text}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    {{/with}}
+</ul>
+<br>
+
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
