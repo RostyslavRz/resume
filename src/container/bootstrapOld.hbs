@@ -1,0 +1,60 @@
+{{!
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<main>
+    <h1 class="text-center text-uppercase">Hello word</h1>
+    <h2 class="text-end text-lovercase">Secondary</h2>
+    <h3 class="text-capitalize">third word path</h3>
+
+    <hr />
+    <div class="display-1">Hello word</div>
+    <div class="display-5">Secondary</div>
+    <div class="display-6">3rd path</div>
+
+    <hr>
+    <span class="text-muted">Додатковий текст</span>
+    <div class="display-1 text-muted">Hello word</div>
+    <hr>
+
+    <button class="btn btn-primary">
+        <span class="text-uppercase">Button primary</span>
+    </button>
+    <button class="btn btn-secondary">Button secondary</button>
+    <button class="btn btn-success">Button success</button>
+    <button class="btn btn-danger">Button danger</button>
+    <button class="btn btn-warning">Button warning</button>
+    <button class="btn btn-info">Button info</button>
+    <button class="btn btn-light">Button light</button>
+    <button class="btn btn-dark">Button dark</button>
+    <button class="btn btn-link">Button link</button>
+    <hr>
+
+    <p class="text-primary">My text</p>
+    <p class="text-secondary">My text</p>
+    <p class="text-success">My text</p>
+    <hr>
+
+    <button class="btn btn-outline-primary">My button</button>
+    <button class="btn btn-outline-secondary">My button</button>
+    <button class="btn btn-outline-success">My button</button>
+    <hr>
+
+    <button class="btn btn-outline-primary btn-lg">My button</button>
+    <button class="btn btn-outline-secondary btn-sm">My button</button>
+    <button class="btn btn-outline-success">My button</button>
+    <hr>
+
+    <div class="card">
+        <div class="card-body"> {{!--якщо прибрати цей div та cad-body, --}}
+            This is content {{!--то контект прижметься до лівого краю рамки --}}
+        </div>
+    </div>
+    <hr>
+</main>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
