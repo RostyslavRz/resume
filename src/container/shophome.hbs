@@ -207,11 +207,9 @@
         </div>
     </div>
 
-
-
     <div class="col-12 my-5">
         {{#with goodsBlock}}
-        <div class="row gy=3 gx-2 pt-4">
+        <div class="row gy=4і gx-2 pt-4">
             <div class="col-4">
                 <div class="card">
                     <img class="card-img-top" src={{cards.[0].image}}>
@@ -262,6 +260,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-4">
                 <div class="card">
                     <img class="card-img-top" src={{cards.[3].image}}>
@@ -294,6 +293,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-4">
                 <div class="card">
                     <img class="card-img-top" src={{cards.[5].image}}>
@@ -342,25 +342,18 @@
     <hr>
 
     <div class="row">
-        <div class="col-10">
-
-            <div claas="col-2">
-                <div class="nav flex-column">
-                    <ol class="dreadcrumb">
-                        <div class="nav-item">
-                            {{#each footer}}
-                            <a href={{[0].link}} class="nav-link">{{[0].text}}</a>
-                            <a href={{[1].link}} class="nav-link">{{[1].text}}</a>
-                            <a href={{[2].link}} class="nav-link">{{[2].text}}</a>
-                            <a href={{[3].link}} class="nav-link">{{[3].text}}</a>
-                            <a class="nav-link disabled">Disabled</a>
-                            {{/each}}
-                        </div>
-                    </ol>
+        {{#each footer}}
+        <div class="col-2">
+            <div class="nav flex-column">
+                <div class="nav-item">
+                    <a href={{[0].link}} class="nav-item nav-link">{{[0].text}}</a>
+                    <a href={{[1].link}} class="nav-item nav-link">{{[1].text}}</a>
+                    <a href={{[2].link}} class="nav-item nav-link">{{[2].text}}</a>
+                    <a href={{[3].link}} class="nav-item nav-link disabled">{{[3].text}}</a>
                 </div>
             </div>
-
         </div>
+        {{/each}}
     </div>
 
 </main>
