@@ -1,0 +1,23 @@
+<div class="row gx-1">
+	{{#with purchase}}
+	<div class="col-3 pt-3 pe-0">
+		{{itemList.[data].number}}
+		<p><b>{{itemList.[data].status}}</b></p>
+	</div>
+	<div class="col-1 me-0 pt-3 pe-0">
+		{{itemList.[data].amount.title}}
+		<p><b>{{itemList.[data].amount.value}}</b></p>
+	</div>
+	<div class="col-5 m-1 ps-1 pe-1">
+		{{#each itemList.[data].images}}
+		<image src={{this}}></image>
+		{{/each}}
+	</div>
+	<div class="col-2 m-1 pt-3 ps-5">
+		<a href={{itemList.[data].button.link}} class="btn {{#if itemList.[data].button}}
+                btn-primary
+                {{/if}} text-end">{{itemList.[data].button.text}}</a>
+	</div>
+	{{/with}}
+	<hr>
+</div>
