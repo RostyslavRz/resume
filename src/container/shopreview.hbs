@@ -1,0 +1,326 @@
+{{!
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<header>
+    <div class="row">
+        <div class="col-12">
+            <div class="nav nav-tabs">
+                {{#with navigation}}
+                <div class="nav-item">
+                    <a href={{links.[0].href}} class="nav-link">{{links.[0].text}}</a>
+                </div>
+                <div class="nav-item">
+                    <a href={{links.[1].href}} class="nav-link">{{links.[1].text}}</a>
+                </div>
+                <div class="nav-item">
+                    <a href={{links.[2].href}} class="nav-link disabled">{{links.[2].text}}</a>
+                </div>
+                {{/with}}
+            </div>
+        </div>
+</header>
+
+<main>
+    <div class="row">
+        <section class="col-8">
+            <div>
+                {{#with formBlock}}
+                <h1>{{header}}</h1>
+                <br>
+                {{#with rating}}
+                {{title}}: {{value}}
+                {{/with}}
+                <br>
+
+                <div>
+                    {{#with actionBlock}}
+                    <div class="nav nav-tabs">
+                        {{#each tabs}}
+                        <div class="nav-item col-4">
+                            <span class="nav-link {{#if isActive}}
+                    active
+                    {{/if}}"><b>{{text}}</b></span>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <hr>
+                <div class="card ps-3">
+                    {{#with report}}
+                    {{title}}
+                    <p><a href="{{button.link}}" class="btn btn-secondary mt-2">{{button.text}}</a></p>
+                    {{/with}}
+                </div>
+                <hr>
+                {{/with}}
+
+                <div>
+                    <h3 class="mb-5">{{feedbackBlock.title}}</h3>
+                    {{#each feedbackBlock.buttons}}
+                    <a href="{{link}}" class="btn {{#if isWarning}}
+                                        btn-warning
+                                        {{/if}}
+                                        {{#if isSuccess}}
+                                        btn-success
+                                        {{/if}}
+                                        {{#if isDanger}}
+                                        btn-danger
+                                        {{/if}}">{{text}}</a>
+
+                    {{/each}}
+                    <div>
+                    </div>
+                    {{/with}}
+        </section>
+
+        <section class="col-4 gy-3">
+            <div>
+                {{#with formBlock.goodsInfo}}
+                <div class="card p-2 pe-5 mb-3">
+                    <img src="{{photo}}">
+                    <br>
+                    <p>{{name}}</p>
+                </div>
+                <div class="card p-2 pe-5 mb-3">
+                    <b>{{price}}</b>
+                    <p>{{#if inMarket}}
+                        Є в наявності
+                        {{/if}}
+                    </p>
+                    {{#each buttons}}
+                    <p><a href="{{link}}" class="btn {{#if isPrimary}}
+                                                    btn-primary                    
+                                                    {{/if}}
+                                                    {{#if isSecondary}}
+                                                    btn-secondary                    
+                                                    {{/if}}">{{text}}</a></p>
+                    {{/each}}
+                </div>
+                <div class="card ps-2">
+                    {{seller.title}}: <b>{{seller.value}}</b>
+                </div>
+
+                {{/with}}
+            </div>
+        </section>
+        <hr>
+        <div class="card col-12 m-1 pt-1 pb-1">
+            {{#each reviewList}}
+            <div class="card mt-2">
+                <div class="header m-2 pb-0">
+                    {{#with title}}
+                    <h5>{{userName}}</h5>
+                    {{caption}}
+                    <p>{{date}}</p>
+                    {{/with}}
+                </div>
+                <hr>
+                <div class="body m-2">
+                    {{#with reviewBody}}
+                    {{seller.title}}:
+                    {{seller.value}}
+                    <br>
+                    <p>{{rating.title}}:
+                        {{rating.value}}
+                    </p>
+                    <br>
+                    {{#each text}}
+                    <p>{{this}}</p>
+                    {{/each}}
+
+                    {{#with advantages}}
+                    <b>{{title}}:</b>
+                    <p>{{text}}</p>
+                    {{/with}}
+
+                    {{#with disadvantages}}
+                    <b>{{title}}:</b>
+                    <p>{{text}}</p>
+                    {{/with}}
+
+                    {{#each images}}
+                    <image src="{{this}}"></image>
+                    {{/each}}
+                    {{/with}}
+
+
+                    {{#each coments}}
+                    <div class="card">
+                        <p><b>{{userName}}</b></p>
+                        <p>{{date}}</p>
+                        <p>{{text}}</p>
+                    </div>
+                    {{/each}}
+
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        {{!-- <div class="col-12">
+            <div class="row gx-1">
+                <div class="col-4 mt-3">
+                    <input class="form-control" placeholder="{{purchase.actionBlock.input.placeholder}}">
+                </div>
+                <div class="col-4 mt-3">
+                    {{#each purchase.actionBlock.buttons}}
+                    <a href={{link}} class="btn 
+                        {{#if isSuccess}}
+                        btn-success
+                        {{/if}}
+                        {{#if isOutline}}
+                        btn-outline-success
+                        {{/if}}
+                        {{#if isDanger}}
+                        btn-outline-danger
+                        {{/if}}
+                        ">{{text}}</a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div>
+            {{#each purchase.itemList}}
+            {{> purchaseItem}}
+            {{/each}}
+            <hr>
+        </div>
+
+
+        <div>
+            {{#with userInfo}}
+            <h4>{{title}}</h4>
+
+            <div class="card mt-2 mb-3 px-2">
+                <p>
+                <h5>{{profileData.title}}</h5>
+                </p>
+                <div class='card m-1'>
+                    <div class="row gx-1 m-2">
+                        {{#with profileData.fullName}}
+                        <div class="col-4 p-1">
+                            <p>{{surname.title}}</p>
+                            <p>{{surname.value}}</p>
+                        </div>
+                        <div class=" col-4">
+                            <p>{{name.title}}</p>
+                            <p>{{name.value}}</p>
+                        </div>
+                        <div class=" col-4">
+                            <p>{{middleName.title}}</p>
+                            <p>{{middleName.value}}</p>
+                        </div>
+                        {{/with}}
+                    </div>
+                </div>
+                <div class='card m-1'>
+                    <div class="row gx-1 m-2">
+                        {{#with profileData.otherInfo}}
+                        <div class="col-4 p-1">
+                            <p>{{birthday.title}}</p>
+                            <p>{{birthday.value}}</p>
+                        </div>
+                        <div class=" col-4">
+                            <p>{{sex.title}}</p>
+                            <p>{{sex.value}}</p>
+                        </div>
+                        <div class=" col-4">
+                            <p>{{language.title}}</p>
+                            <p>{{language.value}}</p>
+                        </div>
+                        {{/with}}
+                    </div>
+                </div>
+                <div class='card m-1'>
+                    <div class="row gx-1 m-2">
+                        {{#each buttons}}
+                        <div class="col-4 p-1 pb-0">
+                            <a href={{link}} class="btn 
+                        {{#if isPrimary}}
+                        btn-primary
+                        {{/if}}
+                        {{#if isSecondary}}
+                        btn-outline-secondary
+                        {{/if}}
+                        {{#if isDanger}}
+                        btn-outline-danger
+                        {{/if}}">{{text}}</a>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3 px-2">
+            <h5>{{recipients.title}}</h5>
+            <div class="row gx-2">
+                {{#each recipients.users}}
+                <div class="card col-4 m-4">
+                    <p>{{name}}</p>
+                    <p>{{phone}}</p>
+                    {{#with button}}
+                    <p><a href={{link}} class="btn btn-primary">{{text}}</a></p>
+                    {{/with}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="card px-2">
+            <h5>{{contacts.title}}</h5>
+            <div class="row gx-2">
+                {{#each contacts.contactData}}
+                <div class="card col-3 m-4">
+                    <p>{{title}}</p>
+                    <p>{{value}}</p>
+                    {{#with button}}
+                    <p><a href={{link}} class="btn {{#if isPrimary}}
+                        btn-primary
+                        {{/if}}
+                        {{#if isSecondary}}
+                        btn-outline-secondary
+                        {{/if}}
+                        {{#if isDanger}}
+                        btn-outline-danger
+                        {{/if}}">{{text}}</a></p>
+                    {{/with}}
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{/with}}
+    </div>
+
+    <br>
+    <hr> --}}
+    </div>
+    <hr>
+</main>
+
+<footer>
+    <div class=" row">
+        {{#each footer}}
+        <div class="col-2">
+            <div class="nav flex-column">
+                <div class="nav-item">
+                    <a href={{[0].link}} class="nav-item nav-link">{{[0].text}}</a>
+                    <a href={{[1].link}} class="nav-item nav-link">{{[1].text}}</a>
+                    <a href={{[2].link}} class="nav-item nav-link">{{[2].text}}</a>
+                    <a href={{[3].link}} class="nav-item nav-link disabled">{{[3].text}}</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</footer>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
