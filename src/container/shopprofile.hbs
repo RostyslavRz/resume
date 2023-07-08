@@ -61,77 +61,13 @@
     </div>
     <hr>
 
-    <div class="row gx-1">
-        {{#with purchase}}
-        <div class="col-3 pt-3 pe-0">
-            {{itemList.[0].number}}
-            <p><b>{{itemList.[0].status}}</b></p>
-        </div>
-        <div class="col-1 me-0 pt-3 pe-0">
-            {{itemList.[0].amount.title}}
-            <p><b>{{itemList.[0].amount.value}}</b></p>
-        </div>
-        <div class="col-5 m-1 ps-1 pe-1">
-            {{#each itemList.[0].images}}
-            <image src={{this}}></image>
-            {{/each}}
-        </div>
-        <div class="col-2 m-1 pt-3 ps-5">
-            <a href={{itemList.[0].button.link}} class="btn {{#if itemList.[0].button}}
-                btn-primary
-                {{/if}} text-end">{{itemList.[0].button.text}}</a>
-        </div>
-        {{/with}}
+    <div>
+        {{#each purchase.itemList}}
+        {{> purchaseItem}}
+        {{/each}}
         <hr>
     </div>
 
-    <div class="row gx-1">
-        {{#with purchase}}
-        <div class="col-3 pt-3 pe-0">
-            {{itemList.[1].number}}
-            <p><b>{{itemList.[1].status}}</b></p>
-        </div>
-        <div class="col-1 me-0 pt-3 pe-0">
-            {{itemList.[1].amount.title}}
-            <p><b>{{itemList.[1].amount.value}}</b></p>
-        </div>
-        <div class="col-5 m-1 ps-1 pe-1">
-            {{#each itemList.[1].images}}
-            <image src={{this}}></image>
-            {{/each}}
-        </div>
-        <div class="col-2 m-1 pt-3 ps-5">
-            <a href={{itemList.[1].button.link}} class="btn {{#if itemList.[1].button}}
-                btn-primary
-                {{/if}} text-end">{{itemList.[1].button.text}}</a>
-        </div>
-        {{/with}}
-        <hr>
-    </div>
-    <div class="row gx-1">
-        {{#with purchase}}
-        <div class="col-3 pt-3 pe-0">
-            {{itemList.[2].number}}
-            <p><b>{{itemList.[2].status}}</b></p>
-        </div>
-        <div class="col-1 me-0 pt-3 pe-0">
-            {{itemList.[2].amount.title}}
-            <p><b>{{itemList.[2].amount.value}}</b></p>
-        </div>
-        <div class="col-5 m-1 ps-1 pe-1">
-            {{#each itemList.[2].images}}
-            <image src={{this}}></image>
-            {{/each}}
-        </div>
-        <div class="col-2 m-1 pt-3 ps-5">
-            <a href={{itemList.[2].button.link}} class="btn {{#if itemList.[2].button}}
-            btn-primary
-            {{/if}} text-end">{{itemList.[2].button.text}}</a>
-        </div>
-        {{/with}}
-        <hr>
-    </div>
-    <hr>
 
     <div>
         {{#with userInfo}}
